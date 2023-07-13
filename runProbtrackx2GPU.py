@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, sys, argparse, datetime, torch, subprocess #$# sys and os are unused, maybe want to use subprocess to run commands?
+import os, sys, argparse, datetime, torch, subprocess 
 from py_console import console, textColor
 
 """
@@ -115,7 +115,7 @@ def build_probtrackx_command(output_directory, bedpost_directory, network_matrix
 
     probtrackxCommand= probtrackx_version + " -x " + network_matrix + " -s " + os.path.join(bedpost_directory, "merged") + " -m " + os.path.join(bedpost_directory, "nodif_brain_mask") + " --dir=" + output_directory + " -l -c 0.2 -S 2000 -P 5000 --fibthresh=0.01 --distthresh=0.0 --sampvox=0.0 --steplength=0.25 --forcedir --opd --network -V 1"
     print(probtrackxCommand)
-    os.system(probtrackxCommand) #$# worth having a flag to optionally run this, or using subprocess.POPEN to capture output?
+    os.system(probtrackxCommand) 
 
 def main(): 
     #------------------- Set Date and Time-------------------
@@ -151,8 +151,6 @@ def main():
 
 
     #------------------- Device Configuration -------------------
-    #$# this is all handled in set_device(), I'd just roll the check for 
-    # use_gpu into the set_device() call and make this one line calling set_device(use_gpu)
     print("#------------------- Device Configuration -------------------")
     if use_gpu == True: 
         device, cuda = set_device()
